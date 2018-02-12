@@ -1,6 +1,6 @@
 It's not illegal to cook infrastructure
 aka. How not to break things bad!
-11:00 28th of April, 2018
+11:00 28 Apr 2018
 Tags: Go, AWS, Furnace
 
 Gergely Bräutigam
@@ -26,11 +26,7 @@ https://skarlso.github.io
 
 * Introduction
 
-* Introductions
-
 * Bad Infrastructure
-
-** Let's define bad infrastructure
 
 - Un-reproducable
 - Fragile
