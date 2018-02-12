@@ -1,0 +1,48 @@
+It's not illegal to cook infrastructure
+aka. How not to break things bad!
+11:00 28th of April, 2018
+Tags: Go, AWS, Furnace
+
+Gergely Bräutigam
+Cloud Engineer, Cheppers
+https://skarlso.github.io
+@Skarlso
+
+* Agenda
+
+- Introductions....................[#2][2]
+- Bad Infrastructure...............[#2][2]
+- How Not To Cook..................[][]
+- ...
+- AWS..............................[#4][4]
+- Bad ( just EC2 )
+- Better ( EC2 goverened by ansible tower / Salt / Chef / Puppet / Whatever
+- Good ( ... ? )
+- Perfection ( insert meme image here the guy with face )
+- CloudFormations..................[][]
+- Furnace..........................[][]
+- Configuring a Stack..............[][]
+- Using Multiple Furnace files.....[][]
+
+* Introduction
+
+* Introductions
+
+* Bad Infrastructure
+
+** Let's define bad infrastructure
+
+- Un-reproducable
+- Fragile
+- Difficult to maintaine
+- Has leprechauns (hand made changes)
+- Too many WTFs
+
+* How Not To Cook
+
+- Using various recipes ( have puppet and chef and ansible at the same time )
+- Overcook ( you infrastructure code is too complicated )
+- Though, that's how pizza was made ( have bread and flavour it with whatever you can find )
+
+* AWS
+
