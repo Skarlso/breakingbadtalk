@@ -13,16 +13,10 @@ https://skarlso.github.io
 - Introductions....................[#2][2]
 - Bad Infrastructure...............[#2][2]
 - How Not To Cook..................[][]
-- ...
 - AWS..............................[#4][4]
-- Bad ( just EC2 )
-- Better ( EC2 goverened by ansible tower / Salt / Chef / Puppet / Whatever
-- Good ( ... ? )
-- Perfection ( insert meme image here the guy with face )
 - CloudFormations..................[][]
 - Furnace..........................[][]
-- Configuring a Stack..............[][]
-- Using Multiple Furnace files.....[][]
+- Why not use X....................[][]
 
 * Introduction
 
@@ -42,3 +36,20 @@ https://skarlso.github.io
 
 * AWS
 
+- Bad ( just EC2 )
+- Better ( EC2 goverened by ansible tower / Salt / Chef / Puppet / Whatever
+- Good ( ... ? )
+- Perfection ( insert meme image here the guy with face )
+
+* CloudFormation
+
+* Furnace
+
+- Configuring a Stack..............[][]
+- Using Multiple Furnace files.....[][]
+
+* Why not use X
+
+- Terraform
+    - Too much baggage
+    - Different usage structure
