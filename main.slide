@@ -22,28 +22,63 @@ https://skarlso.github.io
 
 * Bad Infrastructure
 
+* Common Patterns
+
 - Un-reproducable
 - Fragile
 - Difficult to maintaine
 - Has leprechauns (hand made changes)
-- Too many WTFs
+- Too many "Why is this here? What does it do?" moments
 
 * How Not To Cook
+
+* Gordon Ramsay would be sad
 
 - Using various recipes ( have puppet and chef and ansible at the same time )
 - Overcook ( you infrastructure code is too complicated )
 - Though, that's how pizza was made ( have bread and flavour it with whatever you can find )
+- ...
 
 * AWS
 
-- Bad ( just EC2 )
-- Better ( EC2 goverened by ansible tower / Salt / Chef / Puppet / Whatever
-- Good ( ... ? )
-- Perfection ( insert meme image here the guy with face )
+* How to mis-use AWS
+
+* Bad
+
+- Having a single, monolith EC2 instance with
+- No VPC
+- No Security Groups
+- No Configuration management to manage it
+
+Might as well stick to Linode / Digital Ocean at that point.
+
+* Better
+
+- Still, single EC2, but it's managed by a configuration management system
+- Ansible, Chef, Puppet, Salt...
+- But...
+- No VPC
+- No Security Groups
+- No real single view of how many components there are
+
+* Good
+
+- Security Groups and VPC applied
+- Optionally: LoadBalancers, Autoscaling Groups
+- Things are composed through some kind of configuration management
+- Still... Things might be hand crafted / created. For example: Security groups, IAMs, VPCs or other AWS resources
+
+* Perfection
+
+.image imgs/so_good.png
 
 * CloudFormation
 
-* Furnace
+.link CloudFormation https://aws.amazon.com/cloudformation/
+
+* Managing CloudFormation stacks - Furnace
+
+.link Furnace https://github.com/Skarlso/go-furnace
 
 TODO: insert some ikea graphics.
 - Configuring a Stack..............[][]
@@ -52,5 +87,5 @@ TODO: insert some ikea graphics.
 * Why not use X
 
 - Terraform
-    - Too much baggage
-    - Different usage structure
+- Too much baggage
+- Different usage structure
