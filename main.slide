@@ -10,13 +10,14 @@ https://skarlso.github.io
 
 * Agenda
 
-- Introductions....................[#2][2]
-- Bad Infrastructure...............[#2][2]
-- How Not To Cook..................[][]
-- AWS..............................[#4][4]
-- CloudFormations..................[][]
-- Furnace..........................[][]
-- Why not use X....................[][]
+- Introductions
+- Bad Infrastructure
+- How Not To Cook
+- Enter AWS
+- CloudFormation
+- Managing CloudFormation stacks - Furnace
+- Live Coding
+- Why not use X
 
 * Introduction
 
@@ -37,13 +38,10 @@ https://skarlso.github.io
 - Using various recipes ( have puppet and chef and ansible at the same time )
 - Overcook ( you infrastructure code is too complicated )
 - Though, that's how pizza was made ( have bread and flavour it with whatever you can find )
-- ...
 
-* AWS
+* Enter AWS
 
-* How to mis-use AWS
-
-* Bad
+* Bad usage
 
 - Having a single, monolith EC2 instance with
 - No VPC
@@ -52,7 +50,7 @@ https://skarlso.github.io
 
 Might as well stick to Linode / Digital Ocean at that point.
 
-* Better
+* Better usage
 
 - Still, single EC2, but it's managed by a configuration management system
 - Ansible, Chef, Puppet, Salt...
@@ -61,14 +59,14 @@ Might as well stick to Linode / Digital Ocean at that point.
 - No Security Groups
 - No real single view of how many components there are
 
-* Good
+* Good usage
 
 - Security Groups and VPC applied
 - Optionally: LoadBalancers, Autoscaling Groups
 - Things are composed through some kind of configuration management
 - Still... Things might be hand crafted / created. For example: Security groups, IAMs, VPCs or other AWS resources
 
-* Perfection
+* Perfection...
 
 .image imgs/so_good.png
 
@@ -76,16 +74,91 @@ Might as well stick to Linode / Digital Ocean at that point.
 
 .link CloudFormation https://aws.amazon.com/cloudformation/
 
+* Idenpotent
+
+- What is CloudFormation?
+- How can it help?
+- Why would I use it?
+
 * Managing CloudFormation stacks - Furnace
 
 .link Furnace https://github.com/Skarlso/go-furnace
+.image imgs/furnace_logo.png
 
-TODO: insert some ikea graphics.
-- Configuring a Stack..............[][]
-- Using Multiple Furnace files.....[][]
+* Configuring Furnace
+
+    main:
+      stackname: FurnaceStack
+      spinner: 1
+    aws:
+      code_deploy_role: CodeDeployServiceRole
+      region: us-east-1
+      enable_plugin_system: false
+      template_name: cloud_formation.template
+      app_name: furnace_app
+      code_deploy:
+        # Only needed in case S3 is used for code deployment
+        code_deploy_s3_bucket: furnace_code_bucket
+        # The name of the zip file in case it's on a bucket
+        code_deploy_s3_key: furnace_deploy_app
+        # In case a Git Repository is used for the application, define these two settings
+        git_account: Skarlso/furnace-codedeploy-app
+        git_revision: b89451234...
+
+* Configuring a Stack
+
+    stacks/mystack.yaml
+
+* Create Stacks with Furnace
+
+    faws create
+
+* Deploy Applications with Furnace
+
+    faws push
+
+* Using Multiple Furnace files
+
+    - webstack
+    |-- webstack.yaml
+    |-- webstack.template
+    |
+    - databasestack
+    |-- database_stack.yaml
+    |-- database_stack.template
+    |
+    - .webstack.furnace
+    - .dbstack.furnace
+
+* Creating both stacks
+
+    faws create webstack
+    faws create dbstack
+
+* Live coding
+
+Commence some magic here
+
+* In case live coding fails...
+
+Output of Create
+
+    [/] Waiting for state: CREATE_COMPLETE
+    ... Post-create plugin events...
+    ... Stack state is: CREATE_COMPLETE
+
+* Available maintainance commands
+
+    create
+    update
+    status
+    delete
+    push
+    delete-application
 
 * Why not use X
 
-- Terraform
+* Terraform
+
 - Too much baggage
 - Different usage structure
